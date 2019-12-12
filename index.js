@@ -1,8 +1,8 @@
-require("dotenv").config();
+const REDIS_HOST = process.env.REDIS_HOST || "redis";
 const Docker = require("dockerode");
 const docker = new Docker();
 const redis = require("redis");
-const redisClient = redis.createClient({ host: "redis" });
+const redisClient = redis.createClient({ host: REDIS_HOST });
 
 docker.getEvents({}, (err, data) => {
   if (data) {
